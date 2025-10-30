@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  # CPU-only inference service
+  deepfake-detector-cpu:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        USE_GPU: "false"
+        INSTALL_MODE: "minimal"
+    container_name: deepfake-detector-cpu
+    volumes:
+      - ./data:/app/data
+      - ./results:/app/results
+      - ./checkpoints:/app/checkpoints
+    environment:
+      - DEVICE=cpu
+    command: tail -f /dev/null  # Keep container running
+    
+  # GPU-enabled training service
+  deepfake-detector-gpu:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        USE_GPU: "true"
+        INSTALL_MODE: "full"
+        CUDA_VERSION: "11.8.0"
+    container_name: deepfake-detector-gpu
+    volumes:
+      - ./data:/app/data
+      - ./results:/app/results
+      - ./checkpoints:/app/checkpoints
+      - ./logs:/app/logs
+    environment:
+      - DEVICE=cuda
+      - NVIDIA_VISIBLE_DEVICES=all
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    command: tail -f /dev/null  # Keep container running
+
+volumes:
+  data:
+  results:
+  checkpoints:
+  logs:

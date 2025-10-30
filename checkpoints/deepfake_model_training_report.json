@@ -1,0 +1,120 @@
+{
+  "model_path": "./checkpoints/deepfake_model.pth",
+  "training_start": "2025-10-30T12:27:15.153854",
+  "training_end": "2025-10-30T13:05:50.976471",
+  "total_epochs": 10,
+  "best_epoch": 9,
+  "best_val_accuracy": 1.0,
+  "best_val_auc": 1.0,
+  "final_metrics": {
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1_score": 1.0,
+    "auc": 1.0,
+    "confusion_matrix": [
+      [
+        46,
+        0
+      ],
+      [
+        0,
+        54
+      ]
+    ]
+  },
+  "training_history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.1980245765671134,
+      "train_acc": 0.955,
+      "val_loss": 0.0012788432114757596,
+      "val_acc": 1.0,
+      "val_auc": 1.0
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.015582033758983016,
+      "train_acc": 1.0,
+      "val_loss": 0.001107676059473306,
+      "val_acc": 1.0,
+      "val_auc": 1.0
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.005969483801163733,
+      "train_acc": 1.0,
+      "val_loss": 0.0008011725335381925,
+      "val_acc": 1.0,
+      "val_auc": 1.0
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.027596061524236576,
+      "train_acc": 0.99,
+      "val_loss": 0.00048549696570262315,
+      "val_acc": 1.0,
+      "val_auc": 1.0
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.04032823375542648,
+      "train_acc": 0.985,
+      "val_loss": 0.0004719411733094603,
+      "val_acc": 1.0,
+      "val_auc": 1.0
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.007037388230673969,
+      "train_acc": 1.0,
+      "val_loss": 0.0012893307348713278,
+      "val_acc": 1.0,
+      "val_auc": 1.0
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.0034896988072432578,
+      "train_acc": 1.0,
+      "val_loss": 0.0005267364531755447,
+      "val_acc": 1.0,
+      "val_auc": 1.0
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.0034143642103299497,
+      "train_acc": 1.0,
+      "val_loss": 0.0005640561983454972,
+      "val_acc": 1.0,
+      "val_auc": 1.0
+    },
+    {
+      "epoch": 9,
+      "train_loss": 0.0025563700118800626,
+      "train_acc": 1.0,
+      "val_loss": 0.00017848180170403793,
+      "val_acc": 1.0,
+      "val_auc": 1.0
+    },
+    {
+      "epoch": 10,
+      "train_loss": 0.029570798216736874,
+      "train_acc": 0.98,
+      "val_loss": 0.0004997479560552165,
+      "val_acc": 1.0,
+      "val_auc": 1.0
+    }
+  ],
+  "config": {
+    "epochs": 10,
+    "batch_size": 8,
+    "learning_rate": 0.0001,
+    "backbone": "xception",
+    "image_size": 299,
+    "validation_split": 0.2,
+    "use_mixed_precision": false,
+    "early_stopping_patience": 10,
+    "device": "cpu",
+    "checkpoint_dir": "./checkpoints"
+  }
+}

@@ -1,0 +1,86 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv
+
+# PyCharm
+.idea/
+
+# VSCode
+.vscode/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# PyTest
+.pytest_cache/
+.coverage
+htmlcov/
+*.cover
+.hypothesis/
+
+# Data and models (too large for git)
+data/datasets/
+data/videos/
+checkpoints/*.pth
+checkpoints/*.onnx
+checkpoints/*.pt
+checkpoints/*.trt
+results/
+logs/
+*.log
+
+# Keep directory structure
+!data/.gitkeep
+!checkpoints/.gitkeep
+!results/.gitkeep
+!logs/.gitkeep
+
+# Keep dummy/example data
+!data/dummy_dataset/
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.bak
+
+# Environment variables
+.env
+.env.local
+
+# Dataset metadata
+data/datasets/datasets_metadata.json
+data/datasets/access_requests/
+
+# FaceForensics++ official script (proprietary - not for redistribution)
+datasets/download_faceforensics.py

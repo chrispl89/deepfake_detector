@@ -1,0 +1,12 @@
+{
+  "epochs": 10,
+  "batch_size": 8,
+  "learning_rate": 0.0001,
+  "backbone": "xception",
+  "image_size": 299,
+  "validation_split": 0.2,
+  "use_mixed_precision": false,
+  "early_stopping_patience": 10,
+  "device": "cpu",
+  "checkpoint_dir": "./checkpoints"
+}

@@ -1,0 +1,54 @@
+{
+  "source": "./data/test_images\\test_portrait_07.jpg",
+  "source_type": "image",
+  "timestamp": "2025-10-30T13:17:45.901103",
+  "total_frames": 1,
+  "total_faces_detected": 1,
+  "frames_analysis": [
+    {
+      "frame_number": 0,
+      "timestamp": 0.0,
+      "faces": [
+        {
+          "bbox": [
+            127,
+            113,
+            148,
+            215
+          ],
+          "confidence": 0.9999933242797852,
+          "deepfake_score": 0.5288755297660828,
+          "is_fake": true,
+          "landmarks": [
+            [
+              190,
+              198
+            ],
+            [
+              254,
+              211
+            ],
+            [
+              228,
+              244
+            ],
+            [
+              180,
+              271
+            ],
+            [
+              240,
+              283
+            ]
+          ]
+        }
+      ],
+      "overall_fake_probability": 0.5288755297660828
+    }
+  ],
+  "overall_verdict": "UNCERTAIN",
+  "confidence": 0.5,
+  "metadata": {
+    "output_image": "./data/test_results\\result_07\\annotated_image.jpg"
+  }
+}

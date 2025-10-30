@@ -1,0 +1,86 @@
+============================================================
+DEEPFAKE DETECTOR TEST SUMMARY
+============================================================
+
+Total images tested: 12
+
+Results breakdown:
+  UNCERTAIN: 12
+
+------------------------------------------------------------
+
+Detailed results:
+
+1. test_portrait_01.jpg
+   Verdict: UNCERTAIN
+   Confidence: 50.00%
+   Faces detected: 1
+   Output: ./data/test_results\result_01
+
+2. test_portrait_02.jpg
+   Verdict: UNCERTAIN
+   Confidence: 50.00%
+   Faces detected: 1
+   Output: ./data/test_results\result_02
+
+3. test_portrait_03.jpg
+   Verdict: UNCERTAIN
+   Confidence: 50.00%
+   Faces detected: 1
+   Output: ./data/test_results\result_03
+
+4. test_portrait_04.jpg
+   Verdict: UNCERTAIN
+   Confidence: 50.00%
+   Faces detected: 1
+   Output: ./data/test_results\result_04
+
+5. test_portrait_05.jpg
+   Verdict: UNCERTAIN
+   Confidence: 50.00%
+   Faces detected: 1
+   Output: ./data/test_results\result_05
+
+6. test_portrait_06.jpg
+   Verdict: UNCERTAIN
+   Confidence: 50.00%
+   Faces detected: 1
+   Output: ./data/test_results\result_06
+
+7. test_portrait_07.jpg
+   Verdict: UNCERTAIN
+   Confidence: 50.00%
+   Faces detected: 1
+   Output: ./data/test_results\result_07
+
+8. test_portrait_08.jpg
+   Verdict: UNCERTAIN
+   Confidence: 50.00%
+   Faces detected: 1
+   Output: ./data/test_results\result_08
+
+9. test_portrait_09.jpg
+   Verdict: UNCERTAIN
+   Confidence: 50.00%
+   Faces detected: 1
+   Output: ./data/test_results\result_09
+
+10. test_portrait_10.jpg
+   Verdict: UNCERTAIN
+   Confidence: 50.00%
+   Faces detected: 1
+   Output: ./data/test_results\result_10
+
+11. test_portrait_11.jpg
+   Verdict: UNCERTAIN
+   Confidence: 50.00%
+   Faces detected: 1
+   Output: ./data/test_results\result_11
+
+12. test_portrait_12.jpg
+   Verdict: UNCERTAIN
+   Confidence: 50.00%
+   Faces detected: 1
+   Output: ./data/test_results\result_12
+
+============================================================
