@@ -723,7 +723,7 @@ If you use this code in your research, please cite:
 ```bibtex
 @software{deepfake_detection_system,
   title={Deepfake Detection System},
-  author={Krzysztof Plonka},
+  author={Krzysztof Jaroński},
   year={2025},
   url={https://github.com/chrispl89/deepfake_detector}
 }
