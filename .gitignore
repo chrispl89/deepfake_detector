@@ -276,39 +276,6 @@ api_keys.txt
 # PERSONAL NOTES AND HELPER FILES (NOT NEEDED IN REPO)
 # ============================================================================
 
-# Portable package
-deepfake_detector_portable/
-deepfake_detector_portable.zip
-
-# Helper scripts (temporary)
-test_imports.py
-check_environment.py
-create_test_dir.py
-prepare_test_samples.py
-cleanup_project.py
-create_portable_package.py
-
-# Personal notes (not for repo)
-NOTATKA_DLA_MNIE.md
-PORTABLE_SETUP.md
-QUICK_START.md
-FILES_TO_COPY.txt
-GIT_INSTRUCTIONS.md
-PROGRESS_SUMMARY.md
-LICENSE_INFO.md
-LICENSE
-REPO_SUMMARY.txt
-
-# Additional cleanup items
-setup_directories.py
-run_full_training_pipeline.py
-export_model.py
-cleanup.ps1
-
-# Docker files
-Dockerfile
-docker-compose.yml
-environment.yml
 
 # Old checkpoints
 checkpoints/checkpoint_epoch_*.pth

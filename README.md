@@ -40,6 +40,8 @@ A comprehensive deepfake detection system with real-time webcam analysis, video 
 - F1-Score: **98.21%**
 - AUC-ROC: **99.89%**
 
+> **⚠️ LICENSE NOTE:** This code is MIT licensed. However, if you train models on FaceForensics++ or Celeb-DF datasets, those models inherit "Research Use Only" restrictions. See [LICENSE](LICENSE) file for details.
+
 ## 📖 Table of Contents
 
 - [Installation](#installation)
@@ -673,16 +675,31 @@ If you use this code in your research, please cite:
 
 ## License
 
-This project is licensed under the MIT License.
+This project's **code** is licensed under the MIT License. See the [LICENSE](LICENSE) file for full details.
 
-### Dataset Licenses
+### Important: Dataset and Model Licenses
 
-Please note that some datasets used for training have their own licenses:
-- FaceForensics++: Research use only
-- Celeb-DF: Research use only
-- DFDC: MIT License
+**The code is MIT licensed, but trained models may have additional restrictions:**
 
-Always check and comply with dataset-specific licenses.
+1. **Your Own Models:**
+   - If you train models using this code with your own data or MIT-licensed datasets (like DFDC), your models can be used commercially.
+
+2. **Models Trained on Restricted Datasets:**
+   - Models trained on **FaceForensics++** or **Celeb-DF** inherit "Research Use Only" restrictions
+   - **Commercial use is NOT permitted** for such models
+   - This applies even though the training code is MIT licensed
+
+### Dataset Licenses Summary:
+
+| Dataset | License | Commercial Use | Access |
+|---------|---------|----------------|--------|
+| **FaceForensics++** | Research Only | ❌ No | Requires permission |
+| **Celeb-DF** | Research Only | ❌ No | Requires permission |
+| **DFDC** | MIT License | ✅ Yes | Public (Kaggle) |
+
+**Always check and comply with dataset-specific licenses before using trained models commercially.**
+
+For full license details including third-party components, see [LICENSE](LICENSE) file.
 
 ## Acknowledgments
 
