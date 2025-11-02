@@ -233,17 +233,19 @@ deepfake_detector/
 
 ## Next Steps
 
-1. **Export Model:** Convert to ONNX for production
+1. **Test Your Model:** Run inference on test images
    ```bash
-   python export_model.py --model model.pth --output model.onnx --format onnx
+   python inference.py --source test_image.jpg --type image --model checkpoints/model.pth --device cpu --out ./results
    ```
 
-2. **Deploy:** Use Docker for containerized deployment
+2. **Evaluate Performance:** Use the test script
    ```bash
-   docker-compose up deepfake-detector-cpu
+   python test_trained_model.py --model checkpoints/model.pth
    ```
 
 3. **Improve:** Train on larger datasets (DFDC, Celeb-DF) for better accuracy
+
+4. **Deploy:** Use your trained model in production with `inference.py` or integrate via Python API
 
 ## References
 

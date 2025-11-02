@@ -45,11 +45,17 @@ A comprehensive deepfake detection system with real-time webcam analysis, video 
 - [Installation](#installation)
 - [Quick Start](#quick-start)
 - [Usage Examples](#usage-examples)
-- [Training Your Own Model](#training-your-own-model)
+  - [Webcam Detection](#webcam-real-time-detection)
+  - [Image Analysis](#image-analysis)
+  - [Video Analysis](#video-analysis)
+  - [Camera/Stream Analysis](#camerastream-analysis)
+  - [Training Your Own Model](#training-your-own-model)
 - [API Reference](#api-reference)
 - [Performance](#performance)
+- [Testing](#testing)
 - [Project Structure](#project-structure)
 - [Troubleshooting](#troubleshooting)
+- [Contributing](#contributing)
 
 ## Installation
 
@@ -59,8 +65,6 @@ A comprehensive deepfake detection system with real-time webcam analysis, video 
 - (Optional) NVIDIA GPU with CUDA 11.3+ for training
 
 ### Installation Steps
-
-### Option 1: Using pip (Recommended)
 
 ```bash
 # Clone the repository
@@ -174,23 +178,9 @@ python inference.py --source video.mp4 --type video --model checkpoints/facefore
 python inference.py --source video.mp4 --type video --model checkpoints/faceforensics_model.pth --sample-rate 30 --device cpu --out ./results
 ```
 
-### 4. Train a Model
+**For training your own model, see [TRAINING_GUIDE.md](TRAINING_GUIDE.md) for complete instructions.**
 
-```bash
-# With default settings (requires dataset)
-python train.py --datasets ./data/datasets/my_dataset --output model.pth
-
-# With GPU and mixed precision
-python train.py \
-    --datasets ./data/datasets/dataset1 ./data/datasets/dataset2 \
-    --output model.pth \
-    --device cuda \
-    --mixed-precision \
-    --epochs 50 \
-    --batch-size 32
-```
-
-## Usage
+## Usage Examples
 
 ### Webcam Real-time Detection
 
@@ -272,9 +262,11 @@ python inference.py \
     --duration 60
 ```
 
-### Training
+### Training Your Own Model
 
-#### Prepare Dataset
+> **📘 For complete training instructions, see [TRAINING_GUIDE.md](TRAINING_GUIDE.md)**
+
+#### Quick Start - Prepare Dataset
 
 Organize your dataset:
 
@@ -377,7 +369,7 @@ This project includes scripts to process FaceForensics++:
 3. **Extract faces**: `extract_faces_from_frames.py` (MTCNN)
 4. **Train model**: `train.py`
 
-See `TRAINING_TODO.md` for complete workflow.
+See `TRAINING_GUIDE.md` for complete workflow.
 
 ### Quick Dataset Setup
 
@@ -404,57 +396,6 @@ python datasets/download_faceforensics.py ./data/datasets/faceforensics \
 
 # For testing: Create synthetic dataset
 python -c "from training.dataset import create_dummy_dataset; create_dummy_dataset('./data/dummy_dataset', num_samples=1000)"
-```
-
-## Model Export
-
-### Export to ONNX
-
-ONNX format provides faster inference and cross-platform support:
-
-```bash
-python export_model.py \
-    --model ./checkpoints/model.pth \
-    --output ./checkpoints/model.onnx \
-    --format onnx
-```
-
-### Export to TorchScript
-
-TorchScript for optimized PyTorch deployment:
-
-```bash
-python export_model.py \
-    --model ./checkpoints/model.pth \
-    --output ./checkpoints/model.pt \
-    --format torchscript
-```
-
-### Quantization (CPU Optimization)
-
-Quantize model for faster CPU inference:
-
-```bash
-python export_model.py \
-    --model ./checkpoints/model.pth \
-    --output ./checkpoints/model_quantized.pth \
-    --format quantized
-```
-
-### TensorRT (NVIDIA GPU Optimization)
-
-For maximum GPU performance:
-
-```bash
-# First export to ONNX
-python export_model.py --model model.pth --output model.onnx --format onnx
-
-# Then convert to TensorRT
-python export_model.py \
-    --model model.onnx \
-    --output model.trt \
-    --format tensorrt \
-    --precision fp16
 ```
 
 ## API Reference
@@ -585,17 +526,25 @@ python -m pytest tests/test_smoke.py -v
 ## Project Structure
 
 ```
-face_recognition/
+deepfake_detector/
 ├── deepfake_detector.py       # Core API module
 ├── inference.py                # CLI inference script
 ├── train.py                    # Training script
-├── export_model.py             # Model export utility
-├── face_recon.py               # Original webcam app
-├── face_recon_deepfake.py      # Enhanced webcam app with deepfake detection
+├── face_recon_deepfake.py      # Webcam app with deepfake detection
+│
+├── extract_frames.py           # Extract frames from videos
+├── extract_faces_from_frames.py # Extract faces from frames
+├── download_dataset.py         # Dataset downloader
+├── download_real_dataset.py    # FaceForensics++ helper
+│
+├── test_inference.py           # Quick inference test
+├── test_trained_model.py       # Model testing script
 │
 ├── datasets/                   # Dataset access module
 │   ├── __init__.py
-│   └── dataset_downloader.py
+│   ├── dataset_downloader.py
+│   ├── download_faceforensics.py
+│   └── DOWNLOAD_FACEFORENSICS_README.md
 │
 ├── preprocessing/              # Preprocessing pipeline
 │   ├── __init__.py
@@ -617,23 +566,24 @@ face_recognition/
 │   ├── test_detector.py
 │   └── test_smoke.py
 │
-├── data/                       # Data directory (not in repo)
+├── data/                       # Data directory (gitignored)
 │   ├── datasets/              # Training datasets
 │   └── dummy_dataset/         # Synthetic test data
 │
-├── checkpoints/                # Model checkpoints (not in repo)
-├── results/                    # Inference results (not in repo)
+├── checkpoints/                # Model checkpoints
+│   ├── faceforensics_model.pth
+│   ├── faceforensics_model_config.json
+│   └── faceforensics_model_training_report.json
+│
+├── results/                    # Inference results (gitignored)
+├── logs/                       # Training logs (gitignored)
 │
 ├── requirements.txt            # Full dependencies
 ├── requirements-minimal.txt    # Minimal dependencies
-├── environment.yml             # Conda environment
-├── Dockerfile                  # Docker image
-├── docker-compose.yml          # Docker compose config
-├── .dockerignore
+├── .gitignore                  # Git ignore rules
 │
 ├── README.md                   # This file
-├── TRAINING_TODO.md            # Training status and TODO
-└── LICENSE
+└── TRAINING_GUIDE.md           # Training instructions
 ```
 
 ## Troubleshooting
@@ -723,7 +673,7 @@ If you use this code in your research, please cite:
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
 
 ### Dataset Licenses
 
@@ -746,86 +696,7 @@ Always check and comply with dataset-specific licenses.
 
 For questions, issues, or collaboration:
 - GitHub Issues: [github.com/chrispl89/deepfake_detector/issues](https://github.com/chrispl89/deepfake_detector/issues)
-- Author: Krzysztof Plonka
-
----
-
-## 📦 Portable Setup
-
-### Minimal Package (~60MB)
-
-**Required Files:**
-```
-├── requirements.txt            # Full dependencies
-├── requirements-minimal.txt    # Minimal dependencies
-├── .gitignore                  # Git ignore rules
-│
-├── README.md                   # This file
-└── TRAINING_GUIDE.md           # Training instructions
-```
-
-**Files to Skip (large, unnecessary):**
-```
-❌ data/datasets/                  # ~12GB - training data
-❌ results/                        # Results
-❌ logs/                           # Logs
-❌ __pycache__/                    # Cache
-❌ checkpoints/checkpoint_*.pth    # Training checkpoints
-```
-
-### Quick Installation on New Computer
-
-```bash
-# 1. Extract archive
-unzip deepfake_detector_portable.zip
-
-# 2. Install dependencies
-cd deepfake_detector
-pip install -r requirements.txt
-
-# 3. Test
-python test_inference.py
-
-# 4. Ready!
-python face_recon_deepfake.py --model checkpoints/faceforensics_model.pth
-```
-
----
-
-## 📚 Documentation
-
-- **README.md** (this file) - Quick start and basic usage
-- **FINAL_SUMMARY.md** - Complete project summary and results
-- **TRAINING_GUIDE.md** - Detailed training instructions
-- **TRAINING_TODO.md** - Original task list (completed)
-
----
-
-## 🔧 Troubleshooting
-
-### Problem: "ModuleNotFoundError: No module named 'torch'"
-```bash
-pip install torch torchvision
-```
-
-### Problem: "Model file not found"
-- Check if `checkpoints/faceforensics_model.pth` exists
-- Use full path: `--model C:/path/to/checkpoints/faceforensics_model.pth`
-
-### Problem: "CUDA not available"
-- This is normal on CPU
-- Add `--device cpu` to command
-- Inference will be slower (~0.6s/image)
-
-### Problem: "No faces detected"
-- Ensure face is visible and well-lit
-- Try different image
-- MTCNN requires frontal face
-
-### Problem: Slow inference
-- Use GPU if available: `--device cuda`
-- Reduce image resolution
-- Consider ONNX export for faster inference
+- Author: Krzysztof Jaroński
 
 ---
 

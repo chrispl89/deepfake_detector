@@ -6,9 +6,7 @@ torchvision>=0.10.0
 
 # Deep learning and model support
 timm>=0.6.0  # For better model architectures
-facenet-pytorch>=2.5.2  # For MTCNN face detection (optional)
-onnx>=1.12.0  # For model export
-onnxruntime>=1.12.0  # For ONNX inference
+facenet-pytorch>=2.5.2  # For MTCNN face detection
 
 # Data processing and augmentation
 scikit-learn>=1.0.0
