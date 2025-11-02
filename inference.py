@@ -33,16 +33,19 @@ def main():
         epilog="""
 Examples:
   # Analyze a single image
-  python inference.py --source image.jpg --type image --out ./results
+  python inference.py --source image.jpg --type image --model checkpoints/faceforensics_model.pth --device cpu --out ./results
 
   # Analyze a video file
-  python inference.py --source video.mp4 --type video --out ./results
+  python inference.py --source video.mp4 --type video --model checkpoints/faceforensics_model.pth --device cpu --out ./results
+
+  # Analyze with custom threshold
+  python inference.py --source image.jpg --type image --model checkpoints/faceforensics_model.pth --threshold 0.7 --device cpu --out ./results
 
   # Analyze webcam feed (30 seconds)
-  python inference.py --source 0 --type camera --out ./results --duration 30
+  python inference.py --source 0 --type camera --model checkpoints/faceforensics_model.pth --device cpu --out ./results --duration 30
 
   # Analyze RTSP stream
-  python inference.py --source rtsp://camera_ip/stream --type stream --out ./results
+  python inference.py --source rtsp://camera_ip/stream --type stream --model checkpoints/faceforensics_model.pth --device cpu --out ./results
         """
     )
     

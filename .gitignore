@@ -1,8 +1,94 @@
-# Python
+# ============================================================================
+# DEEPFAKE DETECTOR - .gitignore
+# ============================================================================
+# Protects copyrighted data, large files, and sensitive information
+# ============================================================================
+
+# ============================================================================
+# COPYRIGHTED DATA (DO NOT COMMIT!)
+# ============================================================================
+
+# FaceForensics++ Dataset (Research License - not for redistribution)
+data/datasets/faceforensics_videos/
+data/datasets/faceforensics_frames/
+data/datasets/faceforensics_faces/
+
+# Other datasets (may have their own licenses)
+data/datasets/celeb-df/
+data/datasets/dfdc/
+data/datasets/deepfake-detection-challenge/
+data/datasets/*/
+
+# All video files (may contain protected content)
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.flv
+*.wmv
+*.webm
+
+# Images from datasets (may be protected)
+data/test_images/
+data/validation/
+data/train/
+
+# FaceForensics++ official script (proprietary)
+datasets/download_faceforensics.py
+
+# ============================================================================
+# TRAINED MODELS (LARGE FILES)
+# ============================================================================
+
+# Training checkpoints (large, can be regenerated)
+checkpoints/*.pth
+checkpoints/*.pt
+checkpoints/*.ckpt
+checkpoints/*.h5
+checkpoints/*.pb
+checkpoints/*.weights
+checkpoints/*.onnx
+checkpoints/*.trt
+checkpoints/*.bin
+
+# Training configs (contain local paths)
+checkpoints/*_config.json
+checkpoints/*_training_report.json
+checkpoints/checkpoint_epoch_*.pth
+
+# EXCEPTION: You can add final model if you want (optional)
+# !checkpoints/faceforensics_model.pth
+
+# ============================================================================
+# RESULTS AND LOGS
+# ============================================================================
+
+# Inference results
+results/
+outputs/
+predictions/
+
+# Training logs
+logs/
+*.log
+tensorboard/
+runs/
+
+# Temporary results
+data/test_results/
+temp_results/
+
+# ============================================================================
+# PYTHON
+# ============================================================================
+
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
+
+# Distribution / packaging
 .Python
 build/
 develop-eggs/
@@ -16,71 +102,217 @@ parts/
 sdist/
 var/
 wheels/
+pip-wheel-metadata/
+share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
 MANIFEST
 
-# Virtual environments
-venv/
-ENV/
-env/
-.venv
+# PyInstaller
+*.manifest
+*.spec
 
-# PyCharm
-.idea/
-
-# VSCode
-.vscode/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# PyTest
+# Unit test / coverage
 .pytest_cache/
 .coverage
+.coverage.*
 htmlcov/
 *.cover
 .hypothesis/
+.tox/
+.nox/
 
-# Data and models (too large for git)
-data/datasets/
-data/videos/
-checkpoints/*.pth
-checkpoints/*.onnx
-checkpoints/*.pt
-checkpoints/*.trt
-results/
-logs/
-*.log
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
 
-# Keep directory structure
+# ============================================================================
+# VIRTUAL ENVIRONMENTS
+# ============================================================================
+
+venv/
+ENV/
+env/
+.venv/
+virtualenv/
+pipenv/
+poetry.lock
+
+# ============================================================================
+# IDE AND EDITORS
+# ============================================================================
+
+# PyCharm
+.idea/
+*.iml
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# ============================================================================
+# OPERATING SYSTEM
+# ============================================================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# ============================================================================
+# TEMPORARY FILES
+# ============================================================================
+
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
+*.orig
+*.cache
+
+# ============================================================================
+# SENSITIVE DATA
+# ============================================================================
+
+# API keys and credentials
+*.key
+*.pem
+*.p12
+*.pfx
+credentials.json
+config.secret.json
+secrets.yaml
+.env
+.env.local
+.env.*.local
+
+# Tokens and passwords
+*password*
+*secret*
+*token*
+api_keys.txt
+
+# ============================================================================
+# ARCHIVES AND COMPRESSION
+# ============================================================================
+
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+*.gz
+*.bz2
+
+# EXCEPTION: Portable package (if you want to commit)
+# !deepfake_detector_portable.zip
+
+# ============================================================================
+# LARGE MEDIA FILES
+# ============================================================================
+
+# Images (except small examples)
+# *.jpg
+# *.jpeg
+# *.png
+# *.gif
+# *.bmp
+# *.tiff
+# *.webp
+
+# Audio
+*.mp3
+*.wav
+*.flac
+*.aac
+*.ogg
+
+# ============================================================================
+# PRESERVE DIRECTORY STRUCTURE
+# ============================================================================
+
+# Keep empty folders with .gitkeep
 !data/.gitkeep
 !checkpoints/.gitkeep
 !results/.gitkeep
 !logs/.gitkeep
 
-# Keep dummy/example data
+# Keep dummy dataset (synthetic test data)
 !data/dummy_dataset/
+!data/dummy_dataset/**
 
-# OS
-.DS_Store
-Thumbs.db
-*.swp
-*.swo
-*~
+# ============================================================================
+# PERSONAL NOTES AND HELPER FILES (NOT NEEDED IN REPO)
+# ============================================================================
 
-# Temporary files
-*.tmp
-*.bak
+# Portable package
+deepfake_detector_portable/
+deepfake_detector_portable.zip
 
-# Environment variables
-.env
-.env.local
+# Helper scripts (temporary)
+test_imports.py
+check_environment.py
+create_test_dir.py
+prepare_test_samples.py
+cleanup_project.py
+create_portable_package.py
 
-# Dataset metadata
-data/datasets/datasets_metadata.json
-data/datasets/access_requests/
+# Personal notes (not for repo)
+NOTATKA_DLA_MNIE.md
+PORTABLE_SETUP.md
+QUICK_START.md
+FILES_TO_COPY.txt
+GIT_INSTRUCTIONS.md
+PROGRESS_SUMMARY.md
+LICENSE_INFO.md
+LICENSE
+REPO_SUMMARY.txt
 
-# FaceForensics++ official script (proprietary - not for redistribution)
-datasets/download_faceforensics.py
+# Additional cleanup items
+setup_directories.py
+run_full_training_pipeline.py
+export_model.py
+cleanup.ps1
+
+# Docker files
+Dockerfile
+docker-compose.yml
+environment.yml
+
+# Old checkpoints
+checkpoints/checkpoint_epoch_*.pth
+checkpoints/test_model*.pth
+checkpoints/test_model*.json
+checkpoints/deepfake_model*.pth
+checkpoints/deepfake_model*.json
